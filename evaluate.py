@@ -158,12 +158,11 @@ def build_parser():
     
     parser.add_argument('--in-path', type=str,
                         dest='in_path',help='dir or file to transform',
-                        metavar='IN_PATH', required=True)
+                        metavar='IN_PATH',default=ins)
 
     help_out = 'destination (dir or file) of transformed file or files'
     parser.add_argument('--out-path', type=str,
-                        dest='out_path', help=help_out, metavar='OUT_PATH',
-                        required=True)
+                        dest='out_path', help=help_out, metavar='OUT_PATH', default=outs)
 
     parser.add_argument('--device', type=str,
                         dest='device',help='device to perform compute on',
@@ -175,7 +174,7 @@ def build_parser():
 
     parser.add_argument('--allow-different-dimensions', action='store_true',
                         dest='allow_different_dimensions', 
-                        help='allow different image dimensions')
+                        help='allow different image dimensions', default=' ')
 
     return parser
 
@@ -210,6 +209,5 @@ def main():
         else :
             ffwd(full_in, full_out, opts.checkpoint_dir, device_t=opts.device,
                     batch_size=opts.batch_size)
-
-if __name__ == '__main__':
+if __name__=='__main__':
     main()
