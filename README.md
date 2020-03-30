@@ -10,14 +10,16 @@ Use the pipenv manager to install requirements.
 pip install pipenv
 pipenv --python 2.7.10 
 pipenv install
+sh ./setup.sh
 ```
 
 ## Usage
 
 ```python
-python2 manage.py runserver 
+export FLASK_APP=appfl.py
+python2 -m flask run
 ```
-Ypu give to localhost:8000 photo and it return transfered photo to 1 of 6 styles (random choice default)
+Give to localhost:8000 photo and it return transfered photo to 1 of 6 styles (random choice default)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
