@@ -6,12 +6,12 @@ from PIL import ImageDraw
 
 def make_artwork(in_file, out_file, text):
 
-    # if not in_file.lower().endswith(".jpg") and not in_file.lower().endswith(".jpeg"):
-    #     im = Image.open(in_file)
-    #     rgb_im = im.convert('RGB')
-    #     new_name = in_file.split(".")[0]
-    #     in_file = f"{new_name}.jpg"
-    #     rgb_im.save(in_file)
+    if not in_file.lower().endswith(".jpg") and not in_file.lower().endswith(".jpeg"):
+        im = Image.open(in_file)
+        rgb_im = im.convert('RGB')
+        new_name = in_file.split(".")[0]
+        in_file = f"{new_name}.jpg"
+        rgb_im.save(in_file)
 
     img = Image.open(in_file)
     draw = ImageDraw.Draw(img)
