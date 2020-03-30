@@ -8,7 +8,7 @@ bot = telebot.TeleBot(config.token)
 
 @bot.message_handler(commands=["start"])
 def hello(message):
-    bot.send_message(message.chat.id, "Hello! I am a BOT\nSend me photo and text\nGet your artwork now!")
+    bot.send_message(message.chat.id, f"Привет {message.from_user.first_name} я CITVY BOT!\nЯ помогу вас сделать красивые артворки\nскиньте картинку потом текст и получите готовый картинок")
 
 @bot.message_handler(content_types=["photo"])
 def get_photo(message):
@@ -22,7 +22,7 @@ def get_photo(message):
         photo.write(response.content)
     config.in_file = "image.jpg"
     config.out_file = "converted.jpg"
-    bot.send_message(message.chat.id, "Now send text and get your artwork")
+    bot.send_message(message.chat.id, "Хорошо! Сейчас пишите текст который будет находится на картинке")
 
 @bot.message_handler(content_types=["text"])
 def get_text(message):
