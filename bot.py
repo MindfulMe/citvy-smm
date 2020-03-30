@@ -31,6 +31,7 @@ def get_text(message):
         main.make_artwork(config.in_file, config.out_file, config.text)
         with open(config.out_file, "rb") as photo:
             bot.send_photo(message.chat.id, photo.read())
+        os.system(f"rm {config.in_file} {config.out_file}")
         config.in_file = None
         config.out_file = None
         config.text = None
