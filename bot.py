@@ -12,10 +12,7 @@ def hello(message):
 
 @bot.message_handler(content_types=["photo"])
 def get_photo(message):
-    with open("example.png", "rb") as photo:
-        image = photo.read()
     bot.send_message(message.chat.id, "Пожалуйста скиньте картинку как файл")
-    bot.send_photo(message.chat.id, image)
 
 @bot.message_handler(content_types=["document"])
 def get_photo(message):
