@@ -11,7 +11,7 @@ import subprocess
 import numpy
 from moviepy.video.io.VideoFileClip import VideoFileClip
 import moviepy.video.io.ffmpeg_writer as ffmpeg_writer
-import random 
+import random
 
 BATCH_SIZE = 4
 DEVICE = '/gpu:0'
@@ -187,14 +187,12 @@ def main():
     parser = build_parser()
     opts = parser.parse_args()
     check_opts(opts)
-
     if not os.path.isdir(opts.in_path):
         if os.path.exists(opts.out_path) and os.path.isdir(opts.out_path):
             out_path = \
                     os.path.join(opts.out_path,os.path.basename(opts.in_path))
         else:
             out_path = opts.out_path
-
         ffwd_to_img(opts.in_path, out_path, opts.checkpoint_dir,
                     device=opts.device)
     else:
@@ -204,7 +202,7 @@ def main():
         if opts.allow_different_dimensions:
             ffwd_different_dimensions(full_in, full_out, opts.checkpoint_dir, 
                     device_t=opts.device, batch_size=opts.batch_size)
-        else :
+        else:
             ffwd(full_in, full_out, opts.checkpoint_dir, device_t=opts.device,
                     batch_size=opts.batch_size)
 if __name__=='__main__':

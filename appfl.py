@@ -2,9 +2,9 @@ import os
 from flask import Flask, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 import evaluate
+
+
 UPLOAD_FOLDER = os.getcwd()+'/examples'
-
-
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
@@ -15,11 +15,11 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route('/up/<path:filename>')
-def download_file(filename):
-    print(filename)
-    return send_from_directory((app.config['UPLOAD_FOLDER']+'/thumbs/'),
-                               filename, as_attachment=True)
+# @app.route('/up/<path:filename>')
+# def download_file(filename):
+#     print(filename)
+#     return send_from_directory((app.config['UPLOAD_FOLDER']+'/thumbs/'),
+#                                filename, as_attachment=True)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -43,4 +43,5 @@ def upload_file():
          <input type=submit value=Upload>
     </form>
     '''
+    
 app.run(debug = True)
