@@ -23,7 +23,7 @@ ordered-set==3.1.1
 packaging==20.0
 pathlib2==2.3.5
 pep517==0.6.0
-Pillow==3.4.2
+Pillow==6.2.0
 proglog==0.1.9
 progress==1.5
 protobuf==3.1.0
