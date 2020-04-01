@@ -58,8 +58,8 @@ def make_artwork(in_file, out_file, text):
         draw.text(xy=((W-w)/2, (H-h)/2-(fz/8)), text=text, fill=color["txt_color"], font=font)
 
     font = ImageFont.truetype(f"font-lang/English/citvy.ttf", fz//2)
-    w, h = font.getsize("Citvy")
-    draw.text(xy=(W-w-(w/4), H-h-(h/4)), text="Citvy", fill=(0, 0, 0), font=font)
-    draw.text(xy=(W-w-(w/4), H-h-(h/4)), text="Citvy", fill=(255, 255, 255), font=font)
+    w, h = font.getsize("CITVY")
+    draw.text(xy=(W-w-(w/4), H-h-(h/4)), text="CITVY", fill=(0, 0, 0), font=font)
+    draw.text(xy=(W-w-(w/4), H-h-(h/4)), text="CITVY", fill=(255, 255, 255), font=font)
     
     img.save(out_file)
