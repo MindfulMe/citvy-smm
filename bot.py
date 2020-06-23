@@ -4,6 +4,7 @@ import config
 import telebot
 import requests
 import evaluate
+from PIL import Image
 
 bot = telebot.TeleBot(config.token)
 
@@ -12,11 +13,11 @@ DOWNLOAD_FOLDER = os.getcwd() + '\\examples\\thumbs\\'
 
 @bot.message_handler(commands=["start"])
 def hello(message):
-    bot.send_message(message.chat.id, f"Привет {message.from_user.first_name} я CITVY BOT!\nЯ помогу вас сделать красивые артворки\nскиньте картинку как файл потом текст и получите готовый картинок")
+    bot.send_message(message.chat.id, f"Hello {message.from_user.first_name} I am CITVY ART BOT from https://citvy.com!\nI will help create an art from photo and apply text over it \nsend a picture as a file and then send a text and get an art image")
 
 @bot.message_handler(content_types=["photo"])
 def get_photo(message):
-    bot.send_message(message.chat.id, "Пожалуйста скиньте картинку как файл")
+    bot.send_message(message.chat.id, "Please send the picture as a file")
 
 @bot.message_handler(content_types=["document"])
 def get_photo(message):
@@ -30,7 +31,13 @@ def get_photo(message):
     response = requests.get(url)
     with open(UPLOAD_FOLDER + config.in_file, "wb") as photo:
         photo.write(response.content)
-    bot.send_message(message.chat.id, "Хорошо! Сейчас пишите текст который будет находится на картинке")
+    if not config.in_file.lower().endswith(".jpg") and not config.in_file.lower().endswith(".jpeg"):
+        im = Image.open(UPLOAD_FOLDER + config.in_file)
+        rgb_im = im.convert('RGB')
+        new_name = config.in_file.split(".")[0]
+        config.in_file = f"{new_name}.jpg"
+        rgb_im.save(UPLOAD_FOLDER + config.in_file)
+    bot.send_message(message.chat.id, "Cool!  Now type a text that will be on the artwork picture")
 
 @bot.message_handler(content_types=["text"])
 def get_text(message):
