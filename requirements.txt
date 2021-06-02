@@ -36,7 +36,7 @@ scandir==1.10.0
 scipy==0.18.1
 six==1.13.0
 tqdm==4.41.1
-urllib3==1.25.7
+urllib3==1.26.5
 webencodings==0.5.1
 zipp==0.6.0
 futures==3.3.0
